@@ -53,9 +53,9 @@ SELECT name,age,gender FROM Staff;
 ```
 |name|age|gender|
 |----|---|------|
-|tholv|19|Nam|
-|tholv|19|Nam|
-|Nguyennt|20|Nu|
+|tholv|20|Nam|
+|tholv|20|Nam|
+|Nguyennt|18|Nu|
 
 > SELECT có group by
 ```SQL
@@ -63,8 +63,8 @@ SELECT name,age,gender FROM Staff GROUP BY name,age,gender;
 ```
 |name|age|gender|
 |----|---|------|
-|tholv|19|Nam|
-|Nguyennt|20|Nu|
+|tholv|20|Nam|
+|Nguyennt|18|Nu|
 - **Mệnh đề HAVING**
 > _Mệnh đề HAVING được sử dụng cùng lúc và đứng sau GROUP BY để chỉ ra điều kiện để nhóm các cột có cùng giá trị_
 
@@ -74,16 +74,16 @@ SELECT name,age,gender FROM Staff GROUP BY name,age,gender;
 ```
 |name|age|gender|
 |----|---|------|
-|tholv|19|Nam|
-|Nguyennt|20|Nu|
+|tholv|20|Nam|
+|Nguyennt|18|Nu|
 
 > SELECT **có** HAVING
 ```SQL
-SELECT name,age,gender FROM Staff GROUP BY name,age,gender HAVING age>19;
+SELECT name,age,gender FROM Staff GROUP BY name,age,gender HAVING age<19;
 ```
 |name|age|gender|
 |----|---|------|
-|Nguyennt|20|Nu|
+|Nguyennt|18|Nu|
 
 
 
