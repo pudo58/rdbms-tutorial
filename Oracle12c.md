@@ -104,10 +104,47 @@ CREATE TABLE STAFF
 (
     ID_STAFF NUMBER(10) NOT NULL,
     NAME_STAFF VARCHAR2(255) NOT NULL,
-    PHONE NUMBER(10) NOT NULL UNIQUE
+    PHONE NUMBER(10) NOT NULL UNIQUE,
     PRIMARY KEY(ID_STAFF) 
 );
 ```
+- **NULL**
+> _Đây là từ khóa để chỉ định 1 trường hoặc 1 cột là TRỐNG, Trong OracleDataBase thì ký tự trống '' cũng là NULL_
+> Chúng ta không thể so sánh 2 trường = null , ví dụ : name=null , chúng ta dùng is null hoặc is not null để so sánh
+```SQL
+INSERT INTO STAFF(NAME,AGE) VALUES('',19);
+> ERROR 
+INSERT INTO STAFF(NAME,AGE) VALUES(NULL,19);
+> ERROR
+INSERT INTO STAFF(NAME,AGE) VALUES('THOLV',19);
+> NOT ERROR
+```
+- **JOIN ,INNER JOIN,LEFT JOIN,RIGHT JOIN**
+> _Đều dùng để lấy dữ liệu từ nhiều bảng_
+> _INNER JOIN dùng để lấy dữ liệu chung từ 2 bảng_
+> _LEFT JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên trái_
+> _RIGHT JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên phải_
+```SQL
+SELECT *FROM Staff f JOIN Admin a on f.admin_id = a.admin_id;
+```
+- **LIKE và = trong Oracle Database**
+> _Dấu '=' dùng để so sánh 2 giá trị có bằng nhau hay không, còn like thì cũng tương tự nhưng like có thể dùng để so sánh gần đúng hoặc conatain,startwith,endwith,... Trường hợp so sánh này thì like nhỉnh hơn '='.
+```SQL
+-- dùng =
+SELECT name,age,gender FROM Staff WHERE name = 'tholv';
+```
+|name|age|gender|
+|----|---|------|
+|tholv|20|Nam|
+
+```SQL
+-- DÙNG LIKE 
+SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
+```
+|name|age|gender|
+|----|---|------|
+|tholv|20|Nam|
+
 
 
 
