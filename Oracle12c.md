@@ -85,6 +85,31 @@ SELECT name,age,gender FROM Staff GROUP BY name,age,gender HAVING age<19;
 |----|---|------|
 |Nguyennt|18|Nu|
 
+- **TRUNCATE TABLE table_name**
+> _TRUNCATE TABLE dùng để xóa dữ liệu của 1 bảng , nhưng điểm đặc biệt ở đây khi xóa xong dữ liệu sẽ không thể phục hồi_
+
+- **DELETE table_name** 
+> _Dùng để xóa dữ liệu của 1 bảng, nhưng ta vẫn có thể khôi phục dữ liệu đó được. Khi xóa xong ta tiến hành ROLLBACK lại để lấy dữ liệu_
+```SQL
+DELETE Staff ;
+ROLLBACK;
+```
+- **ROLLBACK,COMMIT**
+> _ROLLBACK dùng để phục hồi lại dữ liệu của trước lúc thêm,sửa,xóa,update..._
+> _COMMIT dùng để lưu những thay đổi vào db và khi ta đã commit thì không thể dùng rollback để phục hồi lại dữ liệu_
+- **UNIQUE**
+> _Đây là từ khóa chỉ 1 trường là duy nhất trong bảng_ 
+```SQL
+CREATE TABLE STAFF
+(
+    ID_STAFF NUMBER(10) NOT NULL,
+    NAME_STAFF VARCHAR2(255) NOT NULL,
+    PHONE NUMBER(10) NOT NULL UNIQUE
+    PRIMARY KEY(ID_STAFF) 
+);
+```
+
+
 
 
 
