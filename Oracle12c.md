@@ -310,6 +310,24 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
      --- GIÁ TRỊ CỦA BẢNG CHÍNH LÀ KẾT QUẢ CỦA 2 CÂU LỆN TRUY VẤN TRÊN
     )SELECT * FROM STAFF_COPY WHERE AGE BETWEEN (SELECT AGE FROM STAFF WHERE ID=1) AND (SELECT AGE FROM STAFF WHERE ID=2);
     ```
+- **Mệnh đề điều kiện IF - ELSE**
+    - Cú pháp
+    ```SQL
+    DECLARE 
+    A NUMBER(10);
+    B NUMBER(10);
+    BEGIN
+    A:=10;
+    B:=10;
+    IF A==B THEN 
+        DBMS_OUTPUT.PUT_LINE('A Equal B');
+    ELSE IF A>B THEN
+        DBMS_OUTPUT.PUT_LINE('A>B');
+    ELSE 
+        DBMS_OUTPUT.PUT_LINE('A <B ');     
+    END IF;
+    END ;
+    ```
 
 
 
