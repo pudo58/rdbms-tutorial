@@ -279,6 +279,24 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     SELECT ID_CLASS,TREAT(STUDENT_CLASS AS STUDENT).NAME,STATUS FROM CLASS
     ```
     - Lưu ý : _TREAT(STUDENT_CLASS AS STUDENT).NAME thì STUDENT_CLASS chính là tên cột trong bảng, STUDENT là tên đối tượng TYPE STUDENT mà chúng ta tạo, NAME là thuộc tính của STUDENT_
+- **TỪ KHÓA : UNION**
+    - Toán tử UNION trả về giá trị của tất cả các hàng từ các câu lệnh truy vấn và xóa đi các phần tử bị trùng lặp.
+    - Ví dụ
+    ```SQL
+    SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=116
+    UNION 
+    SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=87
+    --- UNION  SẼ HỢP NHẤT DỮ LIỆU CỦA 2 CÂU TRUY VẤN THÀNH 1 KẾT QUẢ VÀ XÓA HẾT DỮ LIỆU BỊ TRÙNG CỦA 2 CÂU TRUY VẤN TRÊN
+    --- CHÚNG TA CÓ THỂ TRUY VẤN BẰNG BẢNG KHÁC, KHÔNG NHẤT THIẾT PHẢI LÀ 2 BẢNG CÙNG TÊN , NHƯNG CÁC CỘT CỦA CÁC CÂU TRUY VẤN NÀY TRẢ VỀ KO CẦN CÙNG TÊN, CÙNG KIỂU DỮ LIỆU LÀ ĐƯỢC 
+    ```
+    - **TỪ KHÓA : UNION ALL**
+    - Toán tử UNION ALL cũng giống với UNION nhưng UNION ALL không xóa các phần tử trùng lặp 
+    - Ví dụ
+    ```SQL
+    SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=116
+    UNION ALL 
+    SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=87
+    ```
 
 - **Tạo bảng tạm, biến bảng bằng WITH**
     - WITH dùng để tạo một bảng tạm thời, 1 biến bảng. Bảng trên sẽ không tồn tại trong database khi ta chạy xong câu lệnh, Bảng tạm trên có thể thao tác dữ liệu được như bình thường . Dữ liệu của bảng tạm WITH sẽ phụ thuộc vào dữ liệu của các bảng khác.
@@ -291,7 +309,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
      --- LÚC NÀY STAFF_COPY CHÍNH LÀ TÊN BẢNG VÀ ID,NAME,AGE LÀ TÊN CỘT CỦA BẢNG
      --- GIÁ TRỊ CỦA BẢNG CHÍNH LÀ KẾT QUẢ CỦA 2 CÂU LỆN TRUY VẤN TRÊN
     )SELECT * FROM STAFF_COPY WHERE AGE BETWEEN (SELECT AGE FROM STAFF WHERE ID=1) AND (SELECT AGE FROM STAFF WHERE ID=2);
-    
+    ```
 
 
 
