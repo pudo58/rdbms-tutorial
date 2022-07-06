@@ -356,6 +356,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     ) LOOP
     
     UPDATE PRODUCT SET ID_STAFF=X.ID_STAFF --- CÔNG VIỆC CỦA VÒNG LẶP
+    -- X Ở ĐÂY CHÍNH LÀ BIẾN CỦA FOR 
     END LOOP;
     ```
 
