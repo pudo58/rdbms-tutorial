@@ -249,7 +249,41 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     ```
     - Lưu ý : _Khi chạy xong đoạn code trên thì chúng ta sẽ in được tên và tuổi, biến trong sql khi chạy xong sẽ không lưu vào db mà sẽ bị mất đi_
 
-    
+- **CREATE TYPE (Tạo 1 loại dữ liệu tự định nghĩa)**
+    - Dùng để tạo 1 loại dữ liệu tự định nghĩa, thường là OBJECT
+    - Cú pháp :
+    ```SQL
+
+    --- create type
+    CREATE TYPE STUDENT AS OBJECT
+    (
+        ID_STUDENT NUMBER(10),
+        NAME NVARCHAR2(255)
+        --- STUDENT ĐƯỢC TÍNH LÀ 1 KIỂU DỮ LIỆU , VÀ KIỂU DỮ LIỆU NÀY KO CÓ KHÓA CHÍNH VÀ CÁC RÀNG BUỘC 
+    );
+
+    --- Tạo bảng
+    CREATE TABLE CLASS 
+    (
+        ID_CLASS NUMBER(10) NOT NULL PRIMARY KEY,
+        STUDENT_CLASS STUDENT NOT NULL,-- ĐÂY LÀ KIỂU DỮ LIỆU STUDENT VỪA TẠO
+        STATUS NUMBER(1) NOT NULL
+    );
+    --- THÊM BẢN GHI NHƯ SAU
+    INSERT INTO CLASS VALUES (1,STUDENT(1,'tholv'),0);
+    --- chúng ta thêm cột student thì phải bắt đầu bằng từ khóa student thì Oracle Database mới hiểu .
+    --- 1 và tholv tương ứng là ID_STUDENT và NAME trong STUDENT
+    --- truy vấn dữ liệu của bảng 
+    SELECT * FROM CLASS ;
+    -- NHƯNG KHI TRUY VẤN TA KHÔNG THỂ NHẬN ĐƯỢC GIÁ TRỊ CỤ THỂ CỦA STUDENT , TA CẦN TRUY VẤN NHƯ SAU 
+    SELECT ID_CLASS,TREAT(STUDENT_CLASS AS STUDENT).NAME,STATUS FROM CLASS
+    ```
+    - Lưu ý : _TREAT(STUDENT_CLASS AS STUDENT).NAME thì STUDENT_CLASS chính là tên cột trong bảng, STUDENT là tên đối tượng TYPE STUDENT mà chúng ta tạo, NAME là thuộc tính của STUDENT_
+
+- **Tạo bảng tạm, biến bảng bằng WITH**
+
+
+
 
 
             
