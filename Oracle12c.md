@@ -204,7 +204,53 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         chúng ta sẽ thường làm việc với khóa chính và khóa phụ nhiều hơn .
         - Ràng buộc Khóa chính (PRIMARY KEY) khác với UNIQUE ở điểm là 1 bảng chỉ có thể có 1 khóa chính , nhưng 1 bảng có thể có rất nhiều cột có từ khóa UNIQUE.
         ```SQL 
-        
+        -- TẠO KHÓA CHÍNH KHI TẠO BẢNG
+        CREATE TABLE STAFF
+        (
+            ID_STAFF NUMBER(10) NOT NULL PRIMARY KEY,
+            NAME_STAFF VARCHAR(255) NOT NULL,
+            ADDRESS VARCHAR(255) NOT NULL
+        );
+        --- NẾU BẢNG KHÔNG CÓ KHÓA CHÍNH TẠO BẰNG ALTER TABLE
+        ALTER TABLE STAFF
+        ADD CONSTRAINT PK_STAFF PRIMARY KEY (ID_STAFF);
+        ```
+    - FOREIGN KEY (Ràng buộc 1 trường là  khóa ngoại)    
+
+        - Dùng để thiết lập khóa ngoại trên bảng, tham chiếu đến bảng khác thông qua giá trị của cột được liên kết. Giá trị của cột được liên kết phải là duy nhất trong bảng kia.
+        - Giá trị duy nhất phải có ràng buộc PRIMARY KEY hoặc UNIQUE.
+        - 1 bảng có thể có rất nhiều khóa ngoại
+- **Truy vấn con(Sub Query)**
+    - Truy vấn con (còn được gọi truy vấn phụ hay truy vấn lồng nhau) là một truy vấn bên trong truy vấn SQL khác và được nhúng bên trong mệnh đề WHERE. Một truy vấn con được sử dụng để trả về dữ liệu mà sẽ được sử dụng trong truy vấn chính như là một điều kiện để thu hẹp dữ liệu được thu nhận.
+    - Truy vấn con sẽ trả về dữ liệu của 1 hoặc nhiều bảng , khi dùng join truy vấn con sẽ trả dữ liệu của nhiều bảng về
+    ```SQL
+    -- ví dụ :
+    SELECT *FROM STAFF WHERE CREATED_DATE=(SELECT CREATED_DATE FROM DUAL WHERE ID = 1);
+
+    -- VÍ DỤ :
+    SELECT * FROM (SELECT ID,NAME FROM STAFF )WHERE ID=10;
+    -- KHI NÀY THÌ TRUY VẤN CON SẼ TRẢ VỀ 1 BẢNG CÓ 2 CỘT GIÁ TRỊ VÀ DẤU SELECT * SẼ LẤY 2 GIÁ TRỊ TRONG TRUY VẤN CON ĐÓ. TRUY VẤN CON VIẾT NHIỀU SẼ QUEN .
+    ```
+- **DECLARE(Khai báo biến)**
+    - Dùng để khai báo 1 hoặc nhiều biến trong Oracle Database
+    - Cú pháp : 
+    ```SQL
+    DECLARE
+    name VARCHAR2(255) ;
+    age NUMBER(3);
+    BEGIN
+                                   --- VIỆC LÀM SAU KHI KHAI BÁO BIẾN
+    name:='tholv';                 -- gán giá trị bằng dấu ' := '
+    age:=10;                       -- CHÚNG TA CÓ THỂ LÀM VIỆC THAO TÁC VỚI BIẾN 
+    age:=age+10;
+    DBMS_OUTPUT.PUT_LINE(name) ;
+    DBMS_OUTPUT.PUT_LINE(age) ;
+    END;                           -- KẾT THÚC
+    ```
+    - Lưu ý : _Khi chạy xong đoạn code trên thì chúng ta sẽ in được tên và tuổi, biến trong sql khi chạy xong sẽ không lưu vào db mà sẽ bị mất đi_
+
+    
+
 
             
 
