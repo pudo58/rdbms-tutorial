@@ -359,6 +359,21 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     -- X Ở ĐÂY CHÍNH LÀ BIẾN CỦA FOR 
     END LOOP;
     ```
+- **Vòng lặp WHILE**
+    - Vòng lặp while dùng để duyệt phần tử như for nhưng while sẽ ko biết trước điểm dừng
+    - ví dụ
+    ```SQL
+    DECLARE 
+    count NUMBER(10);
+    BEGIN
+    count:=10;
+    WHILE count<20 LOOP
+    --- công việc của vòng lặp
+    DBMS_OUTPUT.PUT_LINE(count) ;
+    count:=count+1;
+    END LOOP;
+    END ;
+    ```
 
 
 
