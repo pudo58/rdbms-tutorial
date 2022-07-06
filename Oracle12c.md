@@ -159,6 +159,55 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
      ```SQL
     SELECT SYSDATE FROM DUAL;
     ```
+- **CONSTRAINT(Ràng buộc)**
+    - NOT NULL (Ràng buộc không được để trống)
+    ```SQL
+    /* CÚ PHÁP : ALTER TABLE TABLE_NAME
+                 MODIFY (COLUMN NOT NULL)
+    */
+    ALTER TABLE STAFF
+    MODIFY (NAME NOT NULL);
+
+    ```
+
+         Lưu ý : Khi chúng ta thêm ràng buộc NOT NULL thì các dữ liệu trong DATABASE có sẵn không được phép null, nếu null chúng ta phải delete dữ liệu .
+    - DEFAULT (Cung cấp giá trị mặc định cho 1 cột trong trường dữ liệu)
+    ```SQL
+    CREATE TABLE STAFF
+    (
+        ID_STAFF NUMBER(10) NOT NULL PRIMARY KEY,
+        NAME VARCHAR(255) NOT NULL,
+        ADDRESS VARCHAR(255) NOT NULL,
+        STATUS NUMBER(1) DEFAULT 0
+    );
+    ```
+        Lưu ý : Khi ta tạo bảng có từ khóa là DEFAULT thì khi INSERT dữ liệu nếu ta không INSERT cột STATUS thì nó mặc định dữ liệu là 0. Với các cột dữ liệu bằng VARCHAR các bạn có thể để như sau : NAME VARCHAR(255) DEFAULT 'tholv' .
+    - UNIQUE (Ràng buộc 1 cột có giá trị là duy nhất trong bảng . Tất cả dữ liệu của cột có UNIQUE trong bảng sẽ không bị trùng lặp)
+    ```SQL
+    --- tạo UNIQUE khi CREATE TABLE 
+    CREATE TABLE STAFF
+    (
+        ID_STAFF NUMBER(10) NOT NULL PRIMARY KEY,
+        NAME VARCHAR(255) NOT NULL,
+        ADDRESS VARCHAR(255) NOT NULL,
+        EMAIL VARCHAR(255)UNIQUE NOT NULL 
+    );
+    --- tạo bằng ALTER TABLE khi đã có sẵn bảng
+    ALTER TABLE STAFF
+    ADD CONSTRAINT UNI_EMAIL UNIQUE (EMAIL);
+    -- UNI_EMAIL là tên của ràng buộc(constraints) và đặt tên chúng theo cú pháp UNI_COLUMN, chúng ta có thể xóa ràng buộc UNIQUE bằng câu lệnh sau :
+    DROP CONSTRAINT UNI_EMAIL;
+    ```
+    - PRIMARY KEY (Ràng buộc 1 trường là khóa chính)
+
+        - Khi 1 cột được định nghĩa là khóa chính thì nó sẽ không được phép để null và không được phép trùng lặp. Nó sẽ là giá trị duy nhất trong 1 bảng . Thông thường khóa chính dùng để xác định 1 đối tượng, 
+        chúng ta sẽ thường làm việc với khóa chính và khóa phụ nhiều hơn .
+        - Ràng buộc Khóa chính (PRIMARY KEY) khác với UNIQUE ở điểm là 1 bảng chỉ có thể có 1 khóa chính , nhưng 1 bảng có thể có rất nhiều cột có từ khóa UNIQUE.
+        ```SQL 
+        
+
+            
+
 
 
 
