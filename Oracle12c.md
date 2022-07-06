@@ -281,6 +281,17 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     - Lưu ý : _TREAT(STUDENT_CLASS AS STUDENT).NAME thì STUDENT_CLASS chính là tên cột trong bảng, STUDENT là tên đối tượng TYPE STUDENT mà chúng ta tạo, NAME là thuộc tính của STUDENT_
 
 - **Tạo bảng tạm, biến bảng bằng WITH**
+    - WITH dùng để tạo một bảng tạm thời, 1 biến bảng. Bảng trên sẽ không tồn tại trong database khi ta chạy xong câu lệnh, Bảng tạm trên có thể thao tác dữ liệu được như bình thường . Dữ liệu của bảng tạm WITH sẽ phụ thuộc vào dữ liệu của các bảng khác.
+    - Cú pháp :
+    ```SQL
+    WITH STAFF_COPY(ID,NAME,AGE) AS (
+        SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=19
+        UNION ALL 
+        SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=116
+     --- LÚC NÀY STAFF_COPY CHÍNH LÀ TÊN BẢNG VÀ ID,NAME,AGE LÀ TÊN CỘT CỦA BẢNG
+     --- GIÁ TRỊ CỦA BẢNG CHÍNH LÀ KẾT QUẢ CỦA 2 CÂU LỆN TRUY VẤN TRÊN
+    )SELECT * FROM STAFF_COPY WHERE AGE BETWEEN (SELECT AGE FROM STAFF WHERE ID=1) AND (SELECT AGE FROM STAFF WHERE ID=2);
+    
 
 
 
