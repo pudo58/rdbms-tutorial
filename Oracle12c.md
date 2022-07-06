@@ -144,7 +144,21 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
 |name|age|gender|
 |----|---|------|
 |tholv|20|Nam|
-
+- **Lấy dữ liệu ngày giờ hiện tại**
+    - CURRENT_DATE (Lấy dữ liệu ngày hiện tại)
+    ```SQL
+    SELECT * FROM STAFF WHERE CREATED_DATE =CURRENT_DATE;
+    ```
+    
+    - CURRENT_TIMESTAMP (Lấy dữ liệu ngày giờ khu vực hiện tại)
+     ```SQL
+    SELECT CURRENT_TIMESTAMP FROM DUAL;
+    ```
+    
+    - SYSDATE (Lấy dữ liệu ngày hiện tại của máy chủ)
+     ```SQL
+    SELECT SYSDATE FROM DUAL;
+    ```
 
 
 
