@@ -320,14 +320,46 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     A:=10;
     B:=10;
     IF A==B THEN 
-        DBMS_OUTPUT.PUT_LINE('A Equal B');
+        DBMS_OUTPUT.PUT_LINE('A Equal B'); -- xuất ra màn hình
     ELSE IF A>B THEN
-        DBMS_OUTPUT.PUT_LINE('A>B');
+        DBMS_OUTPUT.PUT_LINE('A > B');
     ELSE 
-        DBMS_OUTPUT.PUT_LINE('A <B ');     
+        DBMS_OUTPUT.PUT_LINE('A < B ');     
     END IF;
     END ;
     ```
+- **Vòng lặp FOR**
+    - Vòng lặp for dùng để duyệt 1 mảng phần tử trong Database Oracle 
+    - Vòng lặp for có 2 giá trị là item và array 
+    - Cú pháp :
+    ```SQL
+    FOR item in array
+    LOOP
+    --- công việc cần làm
+    END LOOP;
+    --- item là biến chúng ta tự đặt như nào cũng được, còn array có thể là 1 mảng, 1 câu truy vấn con
+    ```
+
+    - Ví dụ 
+    ```SQL
+    --- xuất các số từ 1->10 
+    BEGIN
+    FOR X IN 1..10 LOOP 
+    DBMS_OUTPUT.put_line(X); 
+    END LOOP; 
+    END;
+    --- dùng for có select 
+
+    FOR X IN (
+        SELECT STAFF.ID_STAFF FROM STAFF JOIN PRODUCT ON PRODUCT.ID_STAFF = STAFF.ID_STAFF
+                           JOIN CATEGORY ON CATEGORY.ID_CATEGORY = PRODUCT.ID_CATEGORY
+    ) LOOP
+    
+    UPDATE PRODUCT SET ID_STAFF=X.ID_STAFF --- CÔNG VIỆC CỦA VÒNG LẶP
+    END LOOP;
+    ```
+
+
 
 
 
