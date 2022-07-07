@@ -422,6 +422,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
             UPDATE STUDENT SET ID_TEACHER=2 WHERE ID_TEACHER=X.ID_TEACHER;
             END LOOP;
             END;
+            ```
     
 
 
