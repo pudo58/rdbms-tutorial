@@ -457,7 +457,17 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     SELECT INITCAP(NAME) FROM TEACHER WHERE ID_TEACHER=1;
     --- Kết quả : Tholv La Van Tho
     ```
+- ### **UPPER , LOWER (Xử lý chuỗi)**
+    - UPPER('paramString') dùng để viết hoa chuỗi truyền vào .
+    - LOWER('paramString') dùng để viết thường chuỗi truyền vào
+    ```SQL
+    SELECT UPPER(NAME) FROM TEACHER WHERE AGE <30;
+    --- SẼ NHÂN ĐC TÊN VIẾT HOA
 
+    SELECT LOWER(NAME) FROM TEACHER WHERE AGE <30;
+    --- SẼ NHẬN ĐƯỢC TÊN VIẾT THƯỜNG 
+    ```
+     
               
 
 
