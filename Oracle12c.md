@@ -374,7 +374,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     END LOOP;
     END ;
     ```
-- # **Ví dụ về FOR LOOP**
+- ### **Ví dụ về FOR LOOP**
     - Để hiểu rõ hơn về FOR LOOP thì mình xin lấy ví dụ sau:
         - Cho cấu trúc bảng sau :
             - TEACHER(***id_teacher***,name,age,gender,phone)
