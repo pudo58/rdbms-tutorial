@@ -423,11 +423,42 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
             END LOOP;
             END;
             ```
-    
+- ### **CASE WHEN(SWITCH CASE)**
+    - CASE WHEN có cú pháp giống SWITCH CASE trong các ngôn ngữ lập trình như Java,C,C++,C#,Javascript ...
+    - CASE WHEN có rất nhiều cách dùng, ở đây mình chỉ đemo 1 cách là dùng trong select .
+    - Code
+    ```SQL
+    SELECT T.ID_TEACHER , CASE T.AGE 
+                        THEN 20 'Trẻ'
+                        THEN 19 ' Qúa trẻ'
+                        ELSE 'Bình thường'
+                        END 
+    FROM
+    (
+        SELECT * FROM TEACHER WHERE AGE <30
+    ) T
+    WHERE T.GENDER LIKE 'NAM';
+    ```
+- ### **SELECT DISTINCT**
+    - Từ khóa DISTINCT trong SELECT dùng để chọn ra những bản ghi không bị trùng lặp. DISTINCT sẽ so sánh từng bản ghi với nhau và sẽ loại bỏ kết quả trùng lặp. Nhưng ở dữ liệu lớn tầm vài chục vài trăm triệu bản ghi thì DISTINCT có vẻ chạy rất chậm và ăn nhiều tài nguyên của máy chủ. 
+    - code demo :
+    ```SQL
+    SELECT DISTINCT 
+    ID_TEACHER,NAME,AGE
+    FROM TEACHER WHERE AGE<35 AND GENDER='NAM';
+    ```
+- ### **INITCAP(Xử lý chuỗi)**
+    - INITCAP dùng để viết hoa các chữ cái đầu trong các từ của 1 chuỗi, các chữ cái không phải chữ cái đầu mà đang ở trạng thái viết hoa sẽ trở về viết thường
+    - code :
+    ```SQL
+    SELECT NAME FROM TEACHER WHERE ID_TEACHER=1;
+    --- Kết quả : THOLV LA VAN Tho
+    --- sau khi dùng INITCAP
+    SELECT INITCAP(NAME) FROM TEACHER WHERE ID_TEACHER=1;
+    --- Kết quả : Tholv La Van Tho
+    ```
 
-
-
-            
+              
 
 
 
