@@ -13,7 +13,7 @@
  
  ```
 
-- **CONCAT(param1,param2)**
+- ### **CONCAT(param1,param2)**
 
 > _CONCAT dùng để nối 2 chuỗi lại với nhau_
 ```SQL
@@ -21,7 +21,7 @@ SELECT CONCAT('tholv','nguyennt') FROM dual;
 
 => 'tholvnguyennt'
 ```
-- **INSTR(string,SubString)**
+- ### **INSTR(string,SubString)**
  > _SubString trong thanm số là chuỗi con đưa vào để kiểm tra xem chuỗi con có nằm trong chuỗi string không , nếu có sẽ trả 
  về 
  số lần mà lặp lại_
@@ -31,7 +31,7 @@ SELECT CONCAT('tholv','nguyennt') FROM dual;
 
  => 1
  ```
- - **LENGTH('param')**
+ - ### **LENGTH('param')**
  > _LENGTH trả về độ dài của chuỗi truyền vào_
 
  ```SQL
@@ -39,12 +39,12 @@ SELECT CONCAT('tholv','nguyennt') FROM dual;
 
  => 8
  ```
- - **to_char(param)**
+ - ### **to_char(param)**
  > _to_char(param) ép kiểu dữ liệu về 1 chuỗi_
  ```SQL
  SELECT to_char(123) from dual;
  ```
-- **Mệnh đề GROUP BY(column1,column2,...)**
+- ### **Mệnh đề GROUP BY(column1,column2,...)**
 > Mệnh đề GROUP BY(column1,column2,...) sẽ nhóm các cột có cùng giá trị lại thành một 
 
 > SELECT không group by
@@ -65,7 +65,7 @@ SELECT name,age,gender FROM Staff GROUP BY name,age,gender;
 |----|---|------|
 |tholv|20|Nam|
 |Nguyennt|18|Nu|
-- **Mệnh đề HAVING**
+- ### **Mệnh đề HAVING**
 > _Mệnh đề HAVING được sử dụng cùng lúc và đứng sau GROUP BY để chỉ ra điều kiện để nhóm các cột có cùng giá trị_
 
 > SELECT không HAVING
@@ -85,19 +85,19 @@ SELECT name,age,gender FROM Staff GROUP BY name,age,gender HAVING age<19;
 |----|---|------|
 |Nguyennt|18|Nu|
 
-- **TRUNCATE TABLE table_name**
+- ### **TRUNCATE TABLE table_name**
 > _TRUNCATE TABLE dùng để xóa dữ liệu của 1 bảng , nhưng điểm đặc biệt ở đây khi xóa xong dữ liệu sẽ không thể phục hồi_
 
-- **DELETE table_name** 
+- ### **DELETE table_name** 
 > _Dùng để xóa dữ liệu của 1 bảng, nhưng ta vẫn có thể khôi phục dữ liệu đó được. Khi xóa xong ta tiến hành ROLLBACK lại để lấy dữ liệu_
 ```SQL
 DELETE Staff ;
 ROLLBACK;
 ```
-- **ROLLBACK,COMMIT**
+- ### **ROLLBACK,COMMIT**
 > _ROLLBACK dùng để phục hồi lại dữ liệu của trước lúc thêm,sửa,xóa,update..._
 > _COMMIT dùng để lưu những thay đổi vào db và khi ta đã commit thì không thể dùng rollback để phục hồi lại dữ liệu_
-- **UNIQUE**
+- ### **UNIQUE**
 > _Đây là từ khóa chỉ 1 trường là duy nhất trong bảng_ 
 ```SQL
 CREATE TABLE STAFF
@@ -108,7 +108,7 @@ CREATE TABLE STAFF
     PRIMARY KEY(ID_STAFF) 
 );
 ```
-- **NULL**
+- ### **NULL**
 > _Đây là từ khóa để chỉ định 1 trường hoặc 1 cột là TRỐNG, Trong OracleDataBase thì ký tự trống '' cũng là NULL_
 > Chúng ta không thể so sánh 2 trường = null , ví dụ : name=null , chúng ta dùng is null hoặc is not null để so sánh
 ```SQL
@@ -119,7 +119,7 @@ INSERT INTO STAFF(NAME,AGE) VALUES(NULL,19);
 INSERT INTO STAFF(NAME,AGE) VALUES('THOLV',19);
 > NOT ERROR
 ```
-- **JOIN ,INNER JOIN,LEFT JOIN,RIGHT JOIN**
+- ### **JOIN ,INNER JOIN,LEFT JOIN,RIGHT JOIN**
 > _Đều dùng để lấy dữ liệu từ nhiều bảng_
 > _INNER JOIN dùng để lấy dữ liệu chung từ 2 bảng_
 > _LEFT JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên trái_
@@ -127,7 +127,7 @@ INSERT INTO STAFF(NAME,AGE) VALUES('THOLV',19);
 ```SQL
 SELECT *FROM Staff f JOIN Admin a on f.admin_id = a.admin_id;
 ```
-- **LIKE và = trong Oracle Database**
+- ### **LIKE và = trong Oracle Database**
 > _Dấu '=' dùng để so sánh 2 giá trị có bằng nhau hay không, còn like thì cũng tương tự nhưng like có thể dùng để so sánh gần đúng hoặc conatain,startwith,endwith,... Trường hợp so sánh này thì like nhỉnh hơn '='.
 ```SQL
 -- dùng =
@@ -144,7 +144,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
 |name|age|gender|
 |----|---|------|
 |tholv|20|Nam|
-- **Lấy dữ liệu ngày giờ hiện tại**
+- ### **Lấy dữ liệu ngày giờ hiện tại**
     - CURRENT_DATE (Lấy dữ liệu ngày hiện tại)
     ```SQL
     SELECT * FROM STAFF WHERE CREATED_DATE =CURRENT_DATE;
@@ -159,7 +159,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
      ```SQL
     SELECT SYSDATE FROM DUAL;
     ```
-- **CONSTRAINT(Ràng buộc)**
+- ### **CONSTRAINT(Ràng buộc)**
     - NOT NULL (Ràng buộc không được để trống)
     ```SQL
     /* CÚ PHÁP : ALTER TABLE TABLE_NAME
@@ -220,7 +220,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         - Dùng để thiết lập khóa ngoại trên bảng, tham chiếu đến bảng khác thông qua giá trị của cột được liên kết. Giá trị của cột được liên kết phải là duy nhất trong bảng kia.
         - Giá trị duy nhất phải có ràng buộc PRIMARY KEY hoặc UNIQUE.
         - 1 bảng có thể có rất nhiều khóa ngoại
-- **Truy vấn con(Sub Query)**
+- ### **Truy vấn con(Sub Query)**
     - Truy vấn con (còn được gọi truy vấn phụ hay truy vấn lồng nhau) là một truy vấn bên trong truy vấn SQL khác và được nhúng bên trong mệnh đề WHERE. Một truy vấn con được sử dụng để trả về dữ liệu mà sẽ được sử dụng trong truy vấn chính như là một điều kiện để thu hẹp dữ liệu được thu nhận.
     - Truy vấn con sẽ trả về dữ liệu của 1 hoặc nhiều bảng , khi dùng join truy vấn con sẽ trả dữ liệu của nhiều bảng về
     ```SQL
@@ -231,7 +231,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     SELECT * FROM (SELECT ID,NAME FROM STAFF )WHERE ID=10;
     -- KHI NÀY THÌ TRUY VẤN CON SẼ TRẢ VỀ 1 BẢNG CÓ 2 CỘT GIÁ TRỊ VÀ DẤU SELECT * SẼ LẤY 2 GIÁ TRỊ TRONG TRUY VẤN CON ĐÓ. TRUY VẤN CON VIẾT NHIỀU SẼ QUEN .
     ```
-- **DECLARE(Khai báo biến)**
+- ### **DECLARE(Khai báo biến)**
     - Dùng để khai báo 1 hoặc nhiều biến trong Oracle Database
     - Cú pháp : 
     ```SQL
@@ -249,7 +249,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     ```
     - Lưu ý : _Khi chạy xong đoạn code trên thì chúng ta sẽ in được tên và tuổi, biến trong sql khi chạy xong sẽ không lưu vào db mà sẽ bị mất đi_
 
-- **CREATE TYPE (Tạo 1 loại dữ liệu tự định nghĩa)**
+- ### **CREATE TYPE (Tạo 1 loại dữ liệu tự định nghĩa)**
     - Dùng để tạo 1 loại dữ liệu tự định nghĩa, thường là OBJECT
     - Cú pháp :
     ```SQL
@@ -279,7 +279,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     SELECT ID_CLASS,TREAT(STUDENT_CLASS AS STUDENT).NAME,STATUS FROM CLASS
     ```
     - Lưu ý : _TREAT(STUDENT_CLASS AS STUDENT).NAME thì STUDENT_CLASS chính là tên cột trong bảng, STUDENT là tên đối tượng TYPE STUDENT mà chúng ta tạo, NAME là thuộc tính của STUDENT_
-- **TỪ KHÓA : UNION**
+- ### **TỪ KHÓA : UNION**
     - Toán tử UNION trả về giá trị của tất cả các hàng từ các câu lệnh truy vấn và xóa đi các phần tử bị trùng lặp.
     - Ví dụ
     ```SQL
@@ -298,7 +298,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=87
     ```
 
-- **Tạo bảng tạm, biến bảng bằng WITH**
+- ### **Tạo bảng tạm, biến bảng bằng WITH**
     - WITH dùng để tạo một bảng tạm thời, 1 biến bảng. Bảng trên sẽ không tồn tại trong database khi ta chạy xong câu lệnh, Bảng tạm trên có thể thao tác dữ liệu được như bình thường . Dữ liệu của bảng tạm WITH sẽ phụ thuộc vào dữ liệu của các bảng khác.
     - Cú pháp :
     ```SQL
@@ -310,7 +310,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
      --- GIÁ TRỊ CỦA BẢNG CHÍNH LÀ KẾT QUẢ CỦA 2 CÂU LỆN TRUY VẤN TRÊN
     )SELECT * FROM STAFF_COPY WHERE AGE BETWEEN (SELECT AGE FROM STAFF WHERE ID=1) AND (SELECT AGE FROM STAFF WHERE ID=2);
     ```
-- **Mệnh đề điều kiện IF - ELSE**
+- ### **Mệnh đề điều kiện IF - ELSE**
     - Cú pháp
     ```SQL
     DECLARE 
@@ -328,7 +328,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     END IF;
     END ;
     ```
-- **Vòng lặp FOR**
+- ### **Vòng lặp FOR**
     - Vòng lặp for dùng để duyệt 1 mảng phần tử trong Database Oracle 
     - Vòng lặp for có 2 giá trị là item và array 
     - Cú pháp :
@@ -359,7 +359,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     -- X Ở ĐÂY CHÍNH LÀ BIẾN CỦA FOR 
     END LOOP;
     ```
-- **Vòng lặp WHILE**
+- ### **Vòng lặp WHILE**
     - Vòng lặp while dùng để duyệt phần tử như for nhưng while sẽ ko biết trước điểm dừng
     - ví dụ
     ```SQL
