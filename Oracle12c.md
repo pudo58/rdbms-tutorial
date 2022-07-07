@@ -377,8 +377,51 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
 - **Ví dụ về FOR LOOP**
     - Để hiểu rõ hơn về FOR LOOP thì mình xin lấy ví dụ sau:
         - Cho cấu trúc bảng sau :
-            - STUDENT(***id_student***,***id_teacher***,name,age,gender)
             - TEACHER(***id_teacher***,name,age,gender,phone)
+            - STUDENT(***id_student***,***id_teacher***,name,age,gender)            
+            - Code 
+            ```SQL
+            CREATE TABLE TEACHER 
+            (
+                ID_TEACHER NUMBER(10) NOT NULL PRIMARY KEY,
+                NAME NVARCHAR2(255 CHAR) NOT NULL,
+                AGE NUMBER(3) NOT NULL,
+                GENDER NVARCHAR2(8 CHAR) NOT NULL
+            );
+            CREATE TABLE STUDENT
+            (
+                ID_STUDENT NUMBER(10) NOT NULL PRIMARY KEY,
+                ID_TEACHER NUMBER(10) NOT NULL,
+                NAME NVARCHAR2(255 CHAR) NOT NULL,
+                AGE NUMBER(3) NOT NULL,
+                GENDER NVARCHAR2(8 CHAR) NOT NULL,
+                PHONE NVARCHAR(15) NOT NULL,
+                CONSTRAINT FK_STUDENT FOREIGN KEY (ID_TEACHER) REFERENCES TEACHER(ID_TEACHER);
+            );
+            CREATE SEQUENCE SEQ_TEACHER;
+            CREATE SEQUENCE SEQ_STUDENT;
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'THOLV',25,'NAM');
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'HIEPTH',35,'NAM');
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'NHATLH',20,'NAM');
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'NGUYENNT',20,'NỮ');
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'HOANGTT',19,'NỮ');
+            --------------------------------------------------------------------
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HOANGNT',17,'NAM');
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HOANT',17,'NỮ');
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HAIVQ',17,'NAM');
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HIVQ',17,'NỮ');
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,2,'THUNN',17,'NỮ');
+            --- ĐỀ BÀI : HÃY CHUYỂN TẤT CẢ HỌC SINH CỦA  THẦY GIÁO LÀ 'THOLV' SANG THẦY 'HIEPTH'
+            --- Ý TƯỞNG : CHÚNG TA CÓ THỂ THẤY ĐƯỢC THẦY GIÁO 'THOLV' ĐANG CÓ 4 HỌC SINH (ID=1 LÀ THOLV)
+                        -- TRONG TRƯỜNG HỢP CÓ 4 DỮ LIỆU NÀY TA PHẢI THỰC HIỆN UPDATE HÀNG LOẠT , LƯU GIÁ TRỊ CŨ VÀO 1 MẢNG BẰNG VÒNG LẶP FOR VÀ TIẾN HÀNH UPDATE HÀNG LOẠT
+            -- LÀM :
+            BEGIN 
+            FOR X IN (
+                SELECT * FROM STUDENT WHERE ID_TEACHER=1;
+            )LOOP
+            UPDATE STUDENT SET ID_TEACHER=2 WHERE ID_TEACHER=X.ID_TEACHER;
+            END LOOP;
+            END;
     
 
 
