@@ -472,6 +472,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     ```
 - ### **UPPER , LOWER (Xử lý chuỗi)**
     - UPPER('paramString') dùng để viết hoa chuỗi truyền vào .
+
     - LOWER('paramString') dùng để viết thường chuỗi truyền vào
     ```SQL
     SELECT UPPER(NAME) FROM TEACHER WHERE AGE <30;
@@ -483,8 +484,14 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
 ## PLSQL/Oracle Database
     
 - ### **CREATE OR REPLACE VIEW**
-    - VIEW  là 1 đoạn lệnh được lập trình viết sẵn trong Database , khi ta gọi VIEW thì nó sẽ hiển thị như bảng bình thường, có thể nói VIEW là bảng ảo.
+    - VIEW  là 1 đoạn lệnh được lập trình viết sẵn trong Database , khi ta gọi VIEW thì nó sẽ hiển thị như
+    
+     bảng bình thường, có thể nói VIEW là bảng ảo.
+
+    - Công dụng để hiển thị dữ liệu .
+
     - Code ví dụ : Tạo view từ dữ liệu của 1 bảng
+
     ```SQL
     CREATE OR REPLACE VIEW TeacherView AS
     SELECT * FROM TEACHER WHERE AGE <30;
@@ -499,6 +506,23 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     ```SQL
     SELECT * FROM TearcherView;
     ```
+    - ### **CREATE OR REPLACE TRIGGER**
+        - TRIGGER là 1 hàm thuộc PLSQL  **_không có tham số đầu vào_**
+
+        - TRIGGER sẽ được gọi khi người dùng tác động làm thay đổi dữ liệu như INSERT,DELETE,UPDATE.
+
+        - Ưu điểm : có thể kiểm tra lỗi ở mức cơ sở dữ liệu,bảo vệ được tính toàn vẹn của dữ liệu.
+        Bình thường các bạn sẽ kiểm tra lỗi trong phía frontend bằng js,kiểm tra lỗi trong phía backend bằng Java,C++,C#,Pyhon,Php...Còn TRIGGER sẽ kiểm tra lỗi ở mức của Cơ sở dữ liệu.
+
+        - Lưu ý : _khi bạn viết câu lệnh INSERT,DELETE,UPDATE thì các TRIGGER bạn tạo ra nó sẽ tự động chạy ngầm_
+
+        - Các loại TRIGGER : BEFORE TRIGGER,AFTER TRIGGER.
+            - Mỗi loại sẽ có 3 trường hợp là BEFORE INSERT,UPDATE,DELETE VÀ AFTER INSERT,DELETE,UPDATE.
+            - Ví dụ khi bạn viết BEFORE INSERT thì hàm này sẽ được gọi trước lúc bạn INSERT vào cơ sở dữ liệu,còn bạn viết AFTER DELETE thì hàm này sẽ được gọi vào sau lúc bạn DELETE vào cơ sở dữ liệu.
+        - Trigger dùng để kiểm tra CONSTRAINT các khóa phụ để bảo toàn dữ liệu .
+        
+
+
 
 
 
