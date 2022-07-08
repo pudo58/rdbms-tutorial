@@ -528,7 +528,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         ON TEACHER
         FOR EACH ROW
         DECLARE 
-        ERROR_AGE EXCEPTION;
+        ERROR_AGE EXCEPTION; -- khai báo ngoại lệ
         BEGIN
         --- CHECK DỮ LIỆU ĐẦU VÀO
         IF :NEW.AGE <18 THEN
@@ -540,7 +540,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         END IF;
         END;
         ```
-        
+
 
 
 
