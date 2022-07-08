@@ -540,6 +540,26 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         END IF;
         END;
         ```
+        - Chúng ta có thể tạo 1 TRIGGER đảm nhiệm BEFORE INSERT,DELETE,UPDATE.
+        - Code demo :
+         ```SQL
+        CREATE OR REPLACE TRIGGER BEFORE_INSERT_TEACHER
+        BEFORE INSERT OR UPDATE OR DELETE -- CHÚNG TA CÓ THỂ TÙY CHỈNH PHẦN NÀY 
+        ON TEACHER
+        FOR EACH ROW
+        DECLARE 
+        ERROR_AGE EXCEPTION; -- khai báo ngoại lệ
+        BEGIN
+        --- CHECK DỮ LIỆU ĐẦU VÀO
+        IF :NEW.AGE <18 THEN
+        RAISE ERROR_AGE; -- GÁN LỖI CHO EXCEPTION
+        EXCEPTION
+        WHEN ERROR_AGE THEN
+        RAISE_APPLICATION_ERROR(-20001,'AGE IS NOT ENOUGH');
+        ROLLBACK; --TRÁNH LOG LẠI BẢNG , NÊN CHO VÀO
+        END IF;
+        END;
+        ```
 
 
 
