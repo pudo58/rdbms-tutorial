@@ -605,7 +605,25 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
             dbms_output.put_line('SUM ' || n3);    
         END;
     - ### **CREATE OR REPLACE PROCEDURE**
+        - PROCEDURE là một hàm con, chương trình con,PROCEDURE không trả về giá trị như FUNCTION, PROCEDURE chứa bên trong những câu lệnh PLSQL. 
+        - Code demo :
+        ```SQL
+        CREATE OR REPLACE PROCEDURE PRINT_SAY_HELLO(message NVARCHAR2 )
+        IS
+        BEGIN
+        DBMS_OUTPUT.PUT_LINE('HELLO '|| message);
+        END ;
+        ```
+        - Gọi PROCEDURE 
+        ```SQL
+        --- CÁCH 1 :
+        CALL PRINT_SAY_HELLO('NGUYENNT');
+        --- CÁCH 2 :
+        EXECUTE PRINT_SAY_HELLO('NGUYENNT');
+        ```
         
+
+
             
 
 
