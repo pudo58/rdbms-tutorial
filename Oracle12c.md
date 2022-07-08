@@ -530,16 +530,18 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         ON TEACHER
         FOR EACH ROW
         DECLARE 
-        ERROR_AGE EXCEPTION; -- khai báo ngoại lệ
+            ERROR_AGE EXCEPTION; -- khai báo ngoại lệ
         BEGIN
         --- CHECK DỮ LIỆU ĐẦU VÀO
-        IF :NEW.AGE <18 THEN
-        RAISE ERROR_AGE; -- GÁN LỖI CHO EXCEPTION
-        EXCEPTION
-        WHEN ERROR_AGE THEN
-        RAISE_APPLICATION_ERROR(-20001,'AGE IS NOT ENOUGH');
-        ROLLBACK; --TRÁNH LOG LẠI BẢNG , NÊN CHO VÀO
+        IF 
+            :NEW.AGE <18 THEN
+            RAISE ERROR_AGE; -- GÁN LỖI CHO EXCEPTION
         END IF;
+        EXCEPTION
+            WHEN ERROR_AGE THEN
+            RAISE_APPLICATION_ERROR(-20001,'AGE IS NOT ENOUGH');
+            ROLLBACK; --TRÁNH LOG LẠI BẢNG , NÊN CHO VÀO
+        
         END;
         ```
         - Chúng ta có thể tạo 1 TRIGGER đảm nhiệm BEFORE INSERT,DELETE,UPDATE.
@@ -550,20 +552,37 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         ON TEACHER
         FOR EACH ROW
         DECLARE 
-        ERROR_AGE EXCEPTION; -- khai báo ngoại lệ
+            ERROR_AGE EXCEPTION; -- khai báo ngoại lệ
         BEGIN
         --- CHECK DỮ LIỆU ĐẦU VÀO
-        IF :NEW.AGE <18 THEN
-        RAISE ERROR_AGE; -- GÁN LỖI CHO EXCEPTION
-        EXCEPTION
-        WHEN ERROR_AGE THEN   -- khi có lỗi
-        RAISE_APPLICATION_ERROR(-20001,'AGE IS NOT ENOUGH'); --- ném ra lỗi 
-        ROLLBACK; --TRÁNH LOG LẠI BẢNG , NÊN CHO VÀO
+        IF 
+            :NEW.AGE <18 THEN
+            RAISE ERROR_AGE; -- GÁN LỖI CHO EXCEPTION
         END IF;
+        EXCEPTION
+            WHEN ERROR_AGE THEN   -- khi có lỗi
+                RAISE_APPLICATION_ERROR(-20001,'AGE IS NOT ENOUGH'); --- ném ra lỗi 
+                ROLLBACK; --TRÁNH LOG LẠI BẢNG , NÊN CHO VÀO       
         END;
         ```
-        - <h2 style="color:red;"> Demo code TRIGGER AFTER INSERT,DELETE,UPDATE.</h2>
-        <button type="button" style="color:red;">Submit</button>
+        - <h2 style="color:;"> <b>Demo code TRIGGER AFTER INSERT,DELETE,UPDATE.</b></h2>
+        ```SQL
+        CREATE OR REPLACE TRIGGER AFTER_INSERT_TRIGGER
+        AFTER INSERT 
+        ON TEACHER
+        FOR EACH ROW
+        BEGIN 
+            IF :NEW.NAME IS NULL OR :NEW.AGE < 19 THEN
+                INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,CONCAT(:NEW.NAME,'CANNOT BE NULL'),:NEW.AGE);
+            END IF;
+            
+        END ;
+        ```
+            
+
+
+
+    
 
 
 
