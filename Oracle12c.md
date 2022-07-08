@@ -33,6 +33,9 @@ SELECT 'tholv'||'nguyennt' FROM dual;
 
  => 1
  ```
+ - ### **TO_DATE**
+ > _TO_DATE('String','regex_date_string') dùng để chuyển chuỗi về dạng date để so sánh order by ..._
+
  - ### **LENGTH('param')**
  > _LENGTH trả về độ dài của chuỗi truyền vào_
 
@@ -621,7 +624,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         --- CÁCH 2 :
         EXECUTE PRINT_SAY_HELLO('NGUYENNT');
         ```
-        
+
 
 
             
