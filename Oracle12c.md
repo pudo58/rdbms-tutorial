@@ -18,6 +18,8 @@
 > _CONCAT dùng để nối 2 chuỗi lại với nhau_
 ```SQL
 SELECT CONCAT('tholv','nguyennt') FROM dual;
+-- CHúng ta còn 1 kiểu nối chuỗi là dùng || 
+SELECT 'tholv'||'nguyennt' FROM dual;
 
 => 'tholvnguyennt'
 ```
@@ -554,12 +556,16 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         IF :NEW.AGE <18 THEN
         RAISE ERROR_AGE; -- GÁN LỖI CHO EXCEPTION
         EXCEPTION
-        WHEN ERROR_AGE THEN
-        RAISE_APPLICATION_ERROR(-20001,'AGE IS NOT ENOUGH');
+        WHEN ERROR_AGE THEN   -- khi có lỗi
+        RAISE_APPLICATION_ERROR(-20001,'AGE IS NOT ENOUGH'); --- ném ra lỗi 
         ROLLBACK; --TRÁNH LOG LẠI BẢNG , NÊN CHO VÀO
         END IF;
         END;
         ```
+        - <h2 style="color:red;"> Demo code TRIGGER AFTER INSERT,DELETE,UPDATE.</h2>
+        <button type="button" style="color:red;">Submit</button>
+
+
 
 
 
