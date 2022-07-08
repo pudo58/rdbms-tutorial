@@ -484,6 +484,14 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     SELECT LOWER(NAME) FROM TEACHER WHERE AGE <30;
     --- SẼ NHẬN ĐƯỢC TÊN VIẾT THƯỜNG 
     ```
+- ### **CREATE TABLE WITH SELECT**
+    - Chúng ta có thể tạo mới 1 bảng dựa vào dữ liệu của bảng cũ
+    - Các cột của bảng mới sẽ dựa vào dữ liệu mà chúng ta select ra .
+    - Bảng trên vẫn được tính là bảng thường và vẫn có thể thêm sửa xóa ...
+    - Cú pháp : CREATE TABLE TABLE_NAME AS SELECT * FROM TABLE_ROOT;
+    ```SQL
+    CREATE TABLE TEACHER_COPY AS SELECT * FROM TEACHER;
+    ```
 # PLSQL/Oracle Database
     
 - ### **CREATE OR REPLACE VIEW**
