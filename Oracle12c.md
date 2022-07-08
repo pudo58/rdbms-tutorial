@@ -579,6 +579,33 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
             
         END ;
         ```
+    - ### **CREATE OR REPLACE FUNCTION**
+        - FUNCTION là một hàm thực hiện một chức năng nào đó và sẽ phải trả về một giá trị duy nhất .
+        - FUNCTION thường sẽ có tham số, và chia làm 3 loại tham số là IN,OUT,IN OUT .
+            - IN : Tham số đầu vào,đây là loại chúng ta hay dùng nhất .
+            - OUT : Tham số đầu ra.
+            - IN OUT : Tham số đầu vừa vào vừa ra .
+        - Cách tạo FUNCTION :
+        ```SQL
+        --- TẠO FUNCTION TÍNH TỔNG 2 SỐ 
+        CREATE OR REPLACE FUNCTION SUM_NUMBER(NUMBER_1 NUMBER,NUMBER_2 NUMBER)
+        RETURN NUMBER
+        AS 
+            RESULT NUMBER(10);
+        BEGIN
+            RESULT:=NUMBER_1+NUMBER_2;
+            RETURN RESULT;
+        END;
+
+        ---- GỌI FUNCTION---- 
+        DECLARE   
+             n3 number(2); ---KHIA BÁO BIẾN    
+        BEGIN   
+            n3 := SUM_NUMBER(11,22);    ---SUM_NUMBER LÀ TÊN FUNCTION, CHÚNG TA CHỈ CẦN GHI TÊN LÀ CÓ THỂ CALL DC FUNCTION.
+            dbms_output.put_line('SUM ' || n3);    
+        END;
+    - ### **CREATE OR REPLACE PROCEDURE**
+        
             
 
 
