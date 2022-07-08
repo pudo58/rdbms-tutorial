@@ -568,7 +568,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
                 ROLLBACK; --TRÁNH LOG LẠI BẢNG , NÊN CHO VÀO       
         END;
         ```
-        - <h2 style="color:;"> <b>Demo code TRIGGER AFTER INSERT,DELETE,UPDATE.</b></h2>
+        - Demo code TRIGGER AFTER INSERT,DELETE,UPDATE.
         ```SQL
         CREATE OR REPLACE TRIGGER AFTER_INSERT_TRIGGER
         AFTER INSERT 
