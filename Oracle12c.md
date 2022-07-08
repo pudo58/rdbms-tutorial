@@ -523,7 +523,10 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
             - Ví dụ khi bạn viết BEFORE INSERT thì hàm này sẽ được gọi trước lúc bạn INSERT vào cơ sở dữ liệu,còn bạn viết AFTER DELETE thì hàm này sẽ được gọi vào sau lúc bạn DELETE vào cơ sở dữ liệu.
         - Trigger dùng để kiểm tra CONSTRAINT các khóa phụ để bảo toàn dữ liệu .
 
-        - Demo code tạo Trigger BEFORE INSERT
+        - Demo code tạo Trigger BEFORE INSERT.
+
+        - Ký hiệu <b>:NEW</b> là chỉ định đây là dữ liệu mới do người dùng insert vào table .
+        - Ký hiệu <b>:OLD</b> là chỉ định đây là dữ liệu cũ của table . 
         ```SQL
         CREATE OR REPLACE TRIGGER BEFORE_INSERT_TEACHER
         BEFORE INSERT 
@@ -539,7 +542,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         END IF;
         EXCEPTION
             WHEN ERROR_AGE THEN
-            RAISE_APPLICATION_ERROR(-20001,'AGE IS NOT ENOUGH');
+            RAISE_APPLICATION_ERROR(-20001,'AGE IS NOT ENOUGH'); --- bắn lỗi ra console
             ROLLBACK; --TRÁNH LOG LẠI BẢNG , NÊN CHO VÀO
         
         END;
