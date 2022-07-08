@@ -426,11 +426,24 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
 - ### **CASE WHEN(SWITCH CASE)**
     - CASE WHEN có cú pháp giống SWITCH CASE trong các ngôn ngữ lập trình như Java,C,C++,C#,Javascript ...
     - CASE WHEN có rất nhiều cách dùng, ở đây mình chỉ đemo 1 cách là dùng trong select .
-    - Code
+    - Code demo CASE WHEN không cần truyền điều kiện vào CASE mà sẽ so sánh trực tiếp trong WHEN
+    ```SQL
+    SELECT T.ID_TEACHER , CASE  
+                        WHEN T.AGE=20 THEN  'Trẻ'
+                        WHEN T.AGE=19 THEN ' Qúa trẻ'
+                        ELSE 'Bình thường'
+                        END 
+    FROM
+    (
+        SELECT * FROM TEACHER WHERE AGE <30
+    ) T
+    WHERE T.GENDER LIKE 'NAM';
+    ```
+    - Code demo CASE WHEN cơ bản
     ```SQL
     SELECT T.ID_TEACHER , CASE T.AGE 
-                        THEN 20 'Trẻ'
-                        THEN 19 ' Qúa trẻ'
+                        WHEN 20 THEN  'Trẻ'
+                        WHEN 19 THEN ' Qúa trẻ'
                         ELSE 'Bình thường'
                         END 
     FROM
@@ -467,8 +480,26 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     SELECT LOWER(NAME) FROM TEACHER WHERE AGE <30;
     --- SẼ NHẬN ĐƯỢC TÊN VIẾT THƯỜNG 
     ```
-     
-              
+## PLSQL/Oracle Database
+    
+- ### **CREATE OR REPLACE VIEW**
+    - VIEW  là 1 đoạn lệnh được lập trình viết sẵn trong Database , khi ta gọi VIEW thì nó sẽ hiển thị như bảng bình thường, có thể nói VIEW là bảng ảo.
+    - Code ví dụ : Tạo view từ dữ liệu của 1 bảng
+    ```SQL
+    CREATE OR REPLACE VIEW TeacherView AS
+    SELECT * FROM TEACHER WHERE AGE <30;
+    ```
+    - Code ví dụ : Tạo view từ dữ liệu của nhiều bảng
+    ```SQL
+    CREATE OR REPLACE VIEW TeacherView AS
+    SELECT * FROM TEACHER T JOIN STUDENT S
+                        ON T.ID_TEACHER=S.ID_STUDENT;
+    ```
+    - Cách gọi VIEW : SELECT * FROM VIEW_NAME;
+    ```SQL
+    SELECT * FROM TearcherView;
+    ```
+
 
 
 
