@@ -238,15 +238,14 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     - Cú pháp : 
     ```SQL
     DECLARE
-    name VARCHAR2(255) ;
-    age NUMBER(3);
-    BEGIN
-                                   --- VIỆC LÀM SAU KHI KHAI BÁO BIẾN
-    name:='tholv';                 -- gán giá trị bằng dấu ' := '
-    age:=10;                       -- CHÚNG TA CÓ THỂ LÀM VIỆC THAO TÁC VỚI BIẾN 
-    age:=age+10;
-    DBMS_OUTPUT.PUT_LINE(name) ;
-    DBMS_OUTPUT.PUT_LINE(age) ;
+        name VARCHAR2(255) ;
+        age NUMBER(3);
+    BEGIN                                  --- VIỆC LÀM SAU KHI KHAI BÁO BIẾN
+        name:='tholv';                 -- gán giá trị bằng dấu ' := '
+        age:=10;                       -- CHÚNG TA CÓ THỂ LÀM VIỆC THAO TÁC VỚI BIẾN 
+        age:=age+10;
+        DBMS_OUTPUT.PUT_LINE(name) ;
+        DBMS_OUTPUT.PUT_LINE(age) ;
     END;                           -- KẾT THÚC
     ```
     - Lưu ý : _Khi chạy xong đoạn code trên thì chúng ta sẽ in được tên và tuổi, biến trong sql khi chạy xong sẽ không lưu vào db mà sẽ bị mất đi_
@@ -316,11 +315,11 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     - Cú pháp
     ```SQL
     DECLARE 
-    A NUMBER(10);
-    B NUMBER(10);
+        A NUMBER(10);
+        B NUMBER(10);
     BEGIN
-    A:=10;
-    B:=10;
+        A:=10;
+        B:=10;
     IF A==B THEN 
         DBMS_OUTPUT.PUT_LINE('A Equal B'); -- xuất ra màn hình
     ELSE IF A>B THEN
@@ -347,7 +346,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     --- xuất các số từ 1->10 
     BEGIN
     FOR X IN 1..10 LOOP 
-    DBMS_OUTPUT.put_line(X); 
+        DBMS_OUTPUT.put_line(X); 
     END LOOP; 
     END;
     --- dùng for có select 
@@ -366,13 +365,12 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     - ví dụ
     ```SQL
     DECLARE 
-    count NUMBER(10);
+        count NUMBER(10);
     BEGIN
-    count:=10;
-    WHILE count<20 LOOP
-    --- công việc của vòng lặp
-    DBMS_OUTPUT.PUT_LINE(count) ;
-    count:=count+1;
+        count:=10;
+        WHILE count<20 LOOP  
+            DBMS_OUTPUT.PUT_LINE(count) ;--- công việc của vòng lặp
+            count:=count+1;
     END LOOP;
     END ;
     ```
@@ -451,7 +449,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     FROM
     (
         SELECT * FROM TEACHER WHERE AGE <30
-    ) T
+    ) T  --T là tên bảng của câu truy vấn con , đặt ntn cũng được
     WHERE T.GENDER LIKE 'NAM';
     ```
 - ### **SELECT DISTINCT**
@@ -459,7 +457,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     - code demo :
     ```SQL
     SELECT DISTINCT 
-    ID_TEACHER,NAME,AGE
+        ID_TEACHER,NAME,AGE
     FROM TEACHER WHERE AGE<35 AND GENDER='NAM';
     ```
 - ### **INITCAP(Xử lý chuỗi)**
