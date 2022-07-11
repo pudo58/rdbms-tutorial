@@ -473,6 +473,37 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     SELECT INITCAP(NAME) FROM TEACHER WHERE ID_TEACHER=1;
     --- Kết quả : Tholv La Van Tho
     ```
+- ### **EXECUTE IMMEDIATE query_string**
+    - EXECUTE IMMEDIATE dùng để chạy gián tiếp một câu lệnh SQL(Struct Query Language).
+    - Bình thường các bạn muốn tạo bảng các bạn phải viết code như sau :
+    ```SQL
+    CREATE TABLE STUDENT
+    (
+        ID_STUDENT NUMBER(10) NOT NULL PRIMARY KEY,
+        NAME VARCHAR(255) NOT NULL,
+        AGE NUMBER(10) NOT NULL,
+        GENDER NVARCHAR2(255) NOT NULL
+    );
+    ```
+    - Thay vì bôi đen chạy thằng một đoạn code như trên thì chúng ta có thể cho đoạn code trên vào 1 biến và 
+    
+    chạy EXECUTE IMMEDIATE.Sau đây là ví dụ demo :
+    ```SQL
+    DECLARE 
+    stringQuery VARCHAR(1024);
+    BEGIN
+    stringQuery := '
+    CREATE TABLE STUDENT
+    (
+        ID_STUDENT NUMBER(10) NOT NULL PRIMARY KEY,
+        NAME VARCHAR(255) NOT NULL,
+        AGE NUMBER(10) NOT NULL,
+        GENDER NVARCHAR2(255) NOT NULL
+    )';
+    EXECUTE IMMEDIATE stringQuery;
+    END;
+    ```
+    
 - ### **UPPER , LOWER (Xử lý chuỗi)**
     - UPPER('paramString') dùng để viết hoa chuỗi truyền vào .
 
@@ -632,6 +663,8 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         --- CÁCH 2 :
         EXECUTE PRINT_SAY_HELLO('NGUYENNT');
         ```
+        
+
 
 
 
