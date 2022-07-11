@@ -293,6 +293,16 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     --- UNION  SẼ HỢP NHẤT DỮ LIỆU CỦA 2 CÂU TRUY VẤN THÀNH 1 KẾT QUẢ VÀ XÓA HẾT DỮ LIỆU BỊ TRÙNG CỦA 2 CÂU TRUY VẤN TRÊN
     --- CHÚNG TA CÓ THỂ TRUY VẤN BẰNG BẢNG KHÁC, KHÔNG NHẤT THIẾT PHẢI LÀ 2 BẢNG CÙNG TÊN , NHƯNG CÁC CỘT CỦA CÁC CÂU TRUY VẤN NÀY TRẢ VỀ KO CẦN CÙNG TÊN, CÙNG KIỂU DỮ LIỆU LÀ ĐƯỢC 
     ```
+    - Chúng ta có thể nối nhiều hơn 2 câu lệnh truy vấn bằng nhiều từ khóa UNION :
+    ```SQL
+     SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=116
+    UNION 
+    SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=87
+    UNION
+    SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID WHERE STAFF_ID=91
+    UNION
+    SELECT ID,NAME,AGE FROM STAFF INNER JOIN PRODUCT ON STAFF.ID = PRODUCT.ID 
+    ```
     - **TỪ KHÓA : UNION ALL**
     - Toán tử UNION ALL cũng giống với UNION nhưng UNION ALL không xóa các phần tử trùng lặp 
     - Ví dụ
@@ -522,6 +532,14 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     - Cú pháp : CREATE TABLE TABLE_NAME AS SELECT * FROM TABLE_ROOT;
     ```SQL
     CREATE TABLE TEACHER_COPY AS SELECT * FROM TEACHER;
+    ```
+- ### **CREATE GLOBAL TEMPORARY TABLE**
+    - CREATE GLOBAL TEMPORARY TABLE_NAME dùng để tạo một bảng tạm, bảng này sẽ không thể liên kết được với các bảng khác .
+    - Chúng ta có thể tạo bảng tạm bằng SELECT giống bên trên nhưng đặc biệt hơn khi ta dùng như thế sẽ <strike><b>không có dữ liệu của bảng</b></strike> . Chúng ta phải tạo bảng tạm bằng SELECT như sau :
+    ```SQL
+    CREATE GLOBAL TEMPORARY STUDENT_TEMP
+    ON COMMIT PRESERVE ROW AS
+    SELECT * FROM STUDENT;
     ```
 # PLSQL/Oracle Database
     
