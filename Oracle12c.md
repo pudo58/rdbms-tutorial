@@ -669,7 +669,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
         - Code demo :
         ```SQL
         CREATE OR REPLACE PROCEDURE PRINT_SAY_HELLO(message NVARCHAR2 )
-        IS
+        IS-- có thể thay IS bằng AS , nhưng chúng ta nên dùng IS vì nó nhỉnh hơn
         BEGIN
         DBMS_OUTPUT.PUT_LINE('HELLO '|| message);
         END ;
