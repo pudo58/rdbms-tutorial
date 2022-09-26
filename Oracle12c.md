@@ -252,7 +252,18 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     END;                           -- KẾT THÚC
     ```
     - Lưu ý : _Khi chạy xong đoạn code trên thì chúng ta sẽ in được tên và tuổi, biến trong sql khi chạy xong sẽ không lưu vào db mà sẽ bị mất đi_
-
+- ### **DELETE ROW (Xóa dữ liệu của 1 hoặc nhiều bảng)**
+    - Dùng để xóa dữ liệu của 1 hoặc nhiều bảng
+    - Cú pháp :
+    ```SQL
+    DELETE FROM STUDENT WHERE ID_STUDENT = 1 ;
+    ```
+    - Để xóa nhiều hàng trong nhiều bảng ta có thể dùng JOIN 
+    - Cú pháp :
+    ```SQL
+    DELETE STUDENT,TEACHER FROM TEACHER JOIN STUDENT ON 
+                            TEACHER.TEACHER_ID = STUDENT.TEACHER_ID
+    ```
 - ### **CREATE TYPE (Tạo 1 loại dữ liệu tự định nghĩa)**
     - Dùng để tạo 1 loại dữ liệu tự định nghĩa, thường là OBJECT
     - Cú pháp :
