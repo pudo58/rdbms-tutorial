@@ -12,6 +12,15 @@
 
 > Dữ liệu demo, chúng ta có 1 bảng Category như sau :
 
+```SQL
+CREATE TABLE Category (
+    CategoryID NUMBER(10) NOT NULL,
+    CategoryName VARCHAR2(50) NOT NULL,
+    ParentID NUMBER(10) NULL,
+    PRIMARY KEY (CategoryID),
+    FOREIGN KEY (ParentID) REFERENCES Category(CategoryID)
+);
+```
 
 | CategoryID | CategoryName | ParentID |
 |------------|--------------|----------|
