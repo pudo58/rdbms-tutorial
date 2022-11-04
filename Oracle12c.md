@@ -55,7 +55,7 @@ INSERT INTO Category VALUES (8, 'LG', 3);
 WITH RECURSIVE cteQuery AS
 (
 	SELECT c.CategoryID,c.CategoryName,c.ParentID FROM category c 
-	where c.categoryId = 1
+	where c.ParentID IS NULL
 	UNION ALL
 	SELECT c.CategoryID,c.CategoryName,c.ParentID FROM category c 
 	INNER JOIN cteQuery cte  ON cte.CategoryID= c.parentid
