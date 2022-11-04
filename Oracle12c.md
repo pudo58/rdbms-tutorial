@@ -11,6 +11,8 @@
 > ví dụ về truy vấn phân cấp trong Oracle Database
 
 > Dữ liệu demo, chúng ta có 1 bảng Category như sau :
+
+
 | CategoryID | CategoryName | ParentID |
 |------------|--------------|----------|
 | 1          | Electronics  | NULL     |
