@@ -20,6 +20,14 @@ CREATE TABLE Category (
     PRIMARY KEY (CategoryID),
     FOREIGN KEY (ParentID) REFERENCES Category(CategoryID)
 );
+INSERT INTO Category VALUES (1, 'Electronics', NULL);
+INSERT INTO Category VALUES (2, 'Mobile', 1);
+INSERT INTO Category VALUES (3, 'TV', 1);
+INSERT INTO Category VALUES (4, 'Samsung', 2);
+INSERT INTO Category VALUES (5, 'LG', 2);
+INSERT INTO Category VALUES (6, 'Sony', 2);
+INSERT INTO Category VALUES (7, 'Samsung', 3);
+INSERT INTO Category VALUES (8, 'LG', 3);
 ```
 
 | CategoryID | CategoryName | ParentID |
