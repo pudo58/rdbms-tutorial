@@ -2,7 +2,7 @@
 
 ## Types of relationships in Oracle Database 
 
-- **Hierarchical query (Truy vấn phân cấp)**
+- ### **Hierarchical query (Truy vấn phân cấp)**
 
 > Truy vấn phân cấp được dùng trong quan hệ đệ quy.
 
@@ -34,7 +34,7 @@
 
 
 ## Function in Oracle 12c
-- **NULLIF(param1,param2)**
+- ### **NULLIF(param1,param2)**
 
 > _nếu 2 tham số không bằng nhau,NULLIF sẽ trả về giá trị là tham số thứ 1_
 
