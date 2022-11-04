@@ -112,6 +112,11 @@ SELECT 'tholv'||'nguyennt' FROM dual;
  ```SQL
  SELECT to_char(123) from dual;
  ```
+ > to_char(param,'regex') ép kiểu dữ liệu về 1 chuỗi theo định dạng regex
+ ```SQL
+    SELECT to_char(123,'999,999,999') from dual;
+    SELECT to_char(CURRENT_DATE,'dd/MM/yyyy') from dual;
+ ```
 - ### **Mệnh đề GROUP BY(column1,column2,...)**
 > Mệnh đề GROUP BY(column1,column2,...) sẽ nhóm các cột có cùng giá trị lại thành một 
 
