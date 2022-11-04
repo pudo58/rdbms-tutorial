@@ -4,7 +4,7 @@
 
 - ### **Hierarchical query (Truy vấn phân cấp)**
 
-> Truy vấn phân cấp được dùng trong quan hệ đệ quy.
+> Truy vấn phân cấp được dùng trong quan hệ đệ quy.Quan hệ đệ quy là quan hệ mà trong đó bảng đó quan hệ với chính nó . Ví dụ như bảng nhân viên quan hệ với bảng nhân viên theo quan hệ cha con. Bảng nhân viên quan hệ với bảng nhân viên theo quan hệ ngang hàng. Bảng nhân viên quan hệ với bảng nhân viên theo quan hệ cha con và ngang hàng.
 
 > Truy vấn phân cấp sẽ trả về toàn bộ dữ liệu của cha bao gồm (con ,cháu,chắt ,...)
 
