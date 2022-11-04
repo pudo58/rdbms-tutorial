@@ -1,5 +1,36 @@
 # Oracle Database 12c
 
+## Types of relationships in Oracle Database
+
+- **Hierarchical query (Truy vấn phân cấp)**
+
+> Truy vấn phân cấp được dùng trong quan hệ đệ quy.
+
+> Truy vấn phân cấp sẽ trả về toàn bộ dữ liệu của cha bao gồm (con ,cháu,chắt ,...)
+
+> ví dụ về truy vấn phân cấp trong Oracle Database
+
+> Dữ liệu demo, chúng ta có 1 bảng Category như sau :
+| CategoryID | CategoryName | ParentID |
+|------------|--------------|----------|
+| 1          | Electronics  | NULL     |
+| 2          | Mobile       | 1        |
+| 3          | TV           | 1        |
+| 4          | Samsung      | 2        |
+| 5          | LG           | 2        |
+| 6          | Sony         | 2        |
+| 7          | Samsung      | 3        |
+| 8          | LG           | 3        |
+
+```SQL
+    SELECT * FROM Category c
+    START WITH c.ParentID IS NULL
+    CONNECT BY PRIOR c.CategoryID = c.ParentID
+    -- Câu lệnh truy vấn trên sẽ trả về toàn bộ dữ liệu con cháu của CategoryID = 1
+
+```
+
+
 ## Function in Oracle 12c
 - **NULLIF(param1,param2)**
 
