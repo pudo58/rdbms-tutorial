@@ -41,6 +41,7 @@ INSERT INTO Category VALUES (8, 'LG', 3);
 | 7          | Samsung      | 3        |
 | 8          | LG           | 3        |
 
+> Demo code Oracle SQL
 ```SQL
     SELECT * FROM Category c
     START WITH c.ParentID IS NULL
@@ -48,7 +49,19 @@ INSERT INTO Category VALUES (8, 'LG', 3);
     -- Câu lệnh truy vấn trên sẽ trả về toàn bộ dữ liệu con cháu của CategoryID = 1
 
 ```
+> Demo code PostgreSQL
 
+```SQL
+WITH RECURSIVE cteQuery AS
+(
+	SELECT c.CategoryID,c.CategoryName,c.ParentID FROM category c 
+	where c.categoryId = 1
+	UNION ALL
+	SELECT c.CategoryID,c.CategoryName,c.ParentID FROM category c 
+	INNER JOIN cteQuery cte  ON cte.CategoryID= c.parentid
+)
+select * FROM cteQuery;
+```
 
 ## Function in Oracle 12c
 - ### **NULLIF(param1,param2)**
