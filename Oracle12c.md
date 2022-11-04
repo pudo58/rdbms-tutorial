@@ -1,6 +1,6 @@
-# Oracle Database 12c
+# Oracle Database 12c (Note by Lã Văn Thọ - FullStack Developer)
 
-## Types of relationships in Oracle Database (Note by Lã Văn Thọ - FullStack Developer)
+## Types of relationships in Oracle Database 
 
 - **Hierarchical query (Truy vấn phân cấp)**
 
