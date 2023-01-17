@@ -1,6 +1,10 @@
 # OracleDataBase
 
-## Note By Lã Văn Thọ
+![oracle database](https://www.crossjoin.pt/wp-content/uploads/2019/08/ImagemArtigo-Site-1-1024x683.jpg)
+
+## Note By Lã Văn Thọ - Fullstack Developer
+
+### Update 17 - 01 - 2023
 
 ### Phần học Oracle DataBase 12c ở đây
 

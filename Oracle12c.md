@@ -233,6 +233,14 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     SELECT SYSDATE FROM DUAL;
     ```
 - ### **CONSTRAINT(Ràng buộc)**
+    - CHECK (Ràng buộc giá trị của 1 cột trong trường dữ liệu)
+    ```SQL
+    /* CÚ PHÁP : ALTER TABLE TABLE_NAME
+                 ADD CONSTRAINT CHECK (COLUMN > 0)
+    */
+    ALTER TABLE STAFF
+    ADD CONSTRAINT CHECK (AGE > 0);
+    ```
     - NOT NULL (Ràng buộc không được để trống)
     ```SQL
     /* CÚ PHÁP : ALTER TABLE TABLE_NAME
@@ -298,10 +306,10 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     - Truy vấn con sẽ trả về dữ liệu của 1 hoặc nhiều bảng , khi dùng join truy vấn con sẽ trả dữ liệu của nhiều bảng về
     ```SQL
     -- ví dụ :
-    SELECT *FROM STAFF WHERE CREATED_DATE=(SELECT CREATED_DATE FROM DUAL WHERE ID = 1);
+    SELECT * FROM STAFF WHERE CREATED_DATE = (SELECT CREATED_DATE FROM DUAL WHERE ID = 1);
 
     -- VÍ DỤ :
-    SELECT * FROM (SELECT ID,NAME FROM STAFF )WHERE ID=10;
+    SELECT * FROM (SELECT ID,NAME FROM STAFF ) temp_table WHERE ID = 10;
     -- KHI NÀY THÌ TRUY VẤN CON SẼ TRẢ VỀ 1 BẢNG CÓ 2 CỘT GIÁ TRỊ VÀ DẤU SELECT * SẼ LẤY 2 GIÁ TRỊ TRONG TRUY VẤN CON ĐÓ. TRUY VẤN CON VIẾT NHIỀU SẼ QUEN .
     ```
 - ### **DECLARE(Khai báo biến)**
@@ -511,7 +519,7 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
             FOR X IN (
                 SELECT * FROM STUDENT WHERE ID_TEACHER=1;
             )LOOP
-            UPDATE STUDENT SET ID_TEACHER=2 WHERE ID_TEACHER=X.ID_TEACHER;
+            UPDATE STUDENT SET ID_TEACHER = 2 WHERE ID_TEACHER = X.ID_TEACHER;
             END LOOP;
             END;
             ```
