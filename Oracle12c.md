@@ -19,15 +19,27 @@ CREATE TABLE Category (
     ParentID NUMBER(10) NULL,
     PRIMARY KEY (CategoryID),
     FOREIGN KEY (ParentID) REFERENCES Category(CategoryID)
-);
-INSERT INTO Category VALUES (1, 'Electronics', NULL);
-INSERT INTO Category VALUES (2, 'Mobile', 1);
-INSERT INTO Category VALUES (3, 'TV', 1);
-INSERT INTO Category VALUES (4, 'Samsung', 2);
-INSERT INTO Category VALUES (5, 'LG', 2);
-INSERT INTO Category VALUES (6, 'Sony', 2);
-INSERT INTO Category VALUES (7, 'Samsung', 3);
-INSERT INTO Category VALUES (8, 'LG', 3);
+)
+/
+INSERT INTO Category VALUES (1, 'Electronics', NULL)
+/
+
+INSERT INTO Category VALUES (2, 'Mobile', 1)
+/
+
+INSERT INTO Category VALUES (3, 'TV', 1)
+/
+INSERT INTO Category VALUES (4, 'Samsung', 2)
+/
+INSERT INTO Category VALUES (5, 'LG', 2)
+/
+INSERT INTO Category VALUES (6, 'Sony', 2)
+/
+INSERT INTO Category VALUES (7, 'Samsung', 3)
+/
+INSERT INTO Category VALUES (8, 'LG', 3)
+/
+
 ```
 
 | CategoryID | CategoryName | ParentID |
@@ -49,6 +61,8 @@ INSERT INTO Category VALUES (8, 'LG', 3);
     -- Câu lệnh truy vấn trên sẽ trả về toàn bộ dữ liệu con cháu của CategoryID = 1
 
 ```
+> Link demo code  :  [here](http://sqlfiddle.com/#!4/04203e/1)
+
 > Demo code PostgreSQL
 
 ```SQL
