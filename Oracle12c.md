@@ -55,10 +55,22 @@ INSERT INTO Category VALUES (8, 'LG', 3)
 
 > Demo code Oracle SQL
 ```SQL
+    -- Cách 1 : Sử dụng CTE (Common Table Expression)
     SELECT * FROM Category c
     START WITH c.ParentID IS NULL
     CONNECT BY PRIOR c.CategoryID = c.ParentID
     -- Câu lệnh truy vấn trên sẽ trả về toàn bộ dữ liệu con cháu của CategoryID = 1
+    -- Cách 2 : Sử dụng RECURSIVE
+   WITH temp_(CategoryID,CategoryName,ParentID) AS
+        (
+            SELECT c.CategoryID,c.CategoryName,c.ParentID
+            FROM Category c WHERE c.parentID is NULL
+            UNION ALL
+            SELECT c.CategoryID,c.CategoryName,c.ParentID
+            FROM Category c INNER JOIN temp_ t 
+            ON c.ParentID = t.CategoryID
+        )
+        SELECT * FROM temp_ t;
 
 ```
 > Link demo code  :  [here](http://sqlfiddle.com/#!4/04203e/1)
