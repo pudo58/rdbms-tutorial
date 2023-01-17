@@ -61,7 +61,7 @@ INSERT INTO Category VALUES (8, 'LG', 3)
     CONNECT BY PRIOR c.CategoryID = c.ParentID
     -- Câu lệnh truy vấn trên sẽ trả về toàn bộ dữ liệu con cháu của CategoryID = 1
     -- Cách 2 : Sử dụng CTE (Common Table Expression)
-   WITH temp_(CategoryID,CategoryName,ParentID) AS
+    WITH temp_(CategoryID,CategoryName,ParentID) AS
         (
             SELECT c.CategoryID,c.CategoryName,c.ParentID
             FROM Category c WHERE c.parentID is NULL
@@ -545,7 +545,8 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
                 NAME NVARCHAR2(255 CHAR) NOT NULL,
                 AGE NUMBER(3) NOT NULL,
                 GENDER NVARCHAR2(8 CHAR) NOT NULL
-            );
+            )
+            /
             CREATE TABLE STUDENT
             (
                 ID_STUDENT NUMBER(10) NOT NULL PRIMARY KEY,
@@ -554,21 +555,34 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
                 AGE NUMBER(3) NOT NULL,
                 GENDER NVARCHAR2(8 CHAR) NOT NULL,
                 PHONE NVARCHAR(15) NOT NULL,
-                CONSTRAINT FK_STUDENT FOREIGN KEY (ID_TEACHER) REFERENCES TEACHER(ID_TEACHER);
-            );
+                CONSTRAINT FK_STUDENT FOREIGN KEY (ID_TEACHER) REFERENCES TEACHER(ID_TEACHER)
+            )
+            /
             CREATE SEQUENCE SEQ_TEACHER;
+            /
             CREATE SEQUENCE SEQ_STUDENT;
-            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'THOLV',25,'NAM');
-            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'HIEPTH',35,'NAM');
-            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'NHATLH',20,'NAM');
-            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'NGUYENNT',20,'NỮ');
-            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'HOANGTT',19,'NỮ');
+            /
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'THOLV',25,'NAM')
+            /
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'HIEPTH',35,'NAM')
+            /
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'NHATLH',20,'NAM')
+            /
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'NGUYENNT',20,'NỮ')
+            /
+            INSERT INTO TEACHER VALUES(SEQ_TEACHER.NEXTVAL,'HOANGTT',19,'NỮ')
+            /
             --------------------------------------------------------------------
-            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HOANGNT',17,'NAM');
-            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HOANT',17,'NỮ');
-            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HAIVQ',17,'NAM');
-            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HIVQ',17,'NỮ');
-            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,2,'THUNN',17,'NỮ');
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HOANGNT',17,'NAM')
+            /
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HOANT',17,'NỮ')
+            /
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HAIVQ',17,'NAM')
+            /
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,1,'HIVQ',17,'NỮ')
+            /
+            INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,2,'THUNN',17,'NỮ')
+            /
             --- ĐỀ BÀI : HÃY CHUYỂN TẤT CẢ HỌC SINH CỦA  THẦY GIÁO LÀ 'THOLV' SANG THẦY 'HIEPTH'
             --- Ý TƯỞNG : CHÚNG TA CÓ THỂ THẤY ĐƯỢC THẦY GIÁO 'THOLV' ĐANG CÓ 4 HỌC SINH (ID=1 LÀ THOLV)
                         -- TRONG TRƯỜNG HỢP CÓ 4 DỮ LIỆU NÀY TA PHẢI THỰC HIỆN UPDATE HÀNG LOẠT , LƯU GIÁ TRỊ CŨ VÀO 1 MẢNG BẰNG VÒNG LẶP FOR VÀ TIẾN HÀNH UPDATE HÀNG LOẠT
@@ -610,6 +624,8 @@ SELECT name,age,gender FROM Staff WHERE name LIKE '%t%';
     ) T  --T là tên bảng của câu truy vấn con , đặt ntn cũng được
     WHERE T.GENDER LIKE 'NAM';
     ```
+    > Lưu ý : Nếu không có ELSE thì nếu không thỏa mãn điều kiện nào thì sẽ trả về NULL, nếu có ELSE thì sẽ trả về giá trị của ELSE, CASE WHEN không phải để lọc dữ liệu mà chỉ để xử lý dữ liệu thô thôi
+
 - ### **SELECT DISTINCT**
     - Từ khóa DISTINCT trong SELECT dùng để chọn ra những bản ghi không bị trùng lặp. DISTINCT sẽ so sánh từng bản ghi với nhau và sẽ loại bỏ kết quả trùng lặp. Nhưng ở dữ liệu lớn tầm vài chục vài trăm triệu bản ghi thì DISTINCT có vẻ chạy rất chậm và ăn nhiều tài nguyên của máy chủ. 
     - code demo :
