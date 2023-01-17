@@ -167,10 +167,17 @@ SELECT name,age,gender FROM Staff GROUP BY name,age,gender HAVING age<19;
 DELETE Staff ;
 ROLLBACK;
 ```
+
 - ### **ROLLBACK,COMMIT**
+
 > _ROLLBACK dùng để phục hồi lại dữ liệu của trước lúc thêm,sửa,xóa,update..._
+
 > _COMMIT dùng để lưu những thay đổi vào db và khi ta đã commit thì không thể dùng rollback để phục hồi lại dữ liệu_
+
+> _OracleDataBase sử dụng Transaction để quản lý các thay đổi của dữ liệu, mỗi lần thực hiện 1 câu lệnh thì nó sẽ tạo ra 1 transaction, khi ta thực hiện commit thì nó sẽ lưu lại transaction đó và khi ta thực hiện rollback thì nó sẽ phục hồi lại transaction đó_
+
 - ### **UNIQUE**
+
 > _Đây là từ khóa chỉ 1 trường là duy nhất trong bảng_ 
 ```SQL
 CREATE TABLE STAFF
@@ -183,7 +190,7 @@ CREATE TABLE STAFF
 ```
 - ### **NULL**
 > _Đây là từ khóa để chỉ định 1 trường hoặc 1 cột là TRỐNG, Trong OracleDataBase thì ký tự trống '' cũng là NULL_
-> Chúng ta không thể so sánh 2 trường = null , ví dụ : name=null , chúng ta dùng is null hoặc is not null để so sánh
+> Chúng ta không thể so sánh 2 trường = null , ví dụ : name = null , chúng ta dùng is null hoặc is not null để so sánh
 ```SQL
 INSERT INTO STAFF(NAME,AGE) VALUES('',19);
 > ERROR 
@@ -192,16 +199,41 @@ INSERT INTO STAFF(NAME,AGE) VALUES(NULL,19);
 INSERT INTO STAFF(NAME,AGE) VALUES('THOLV',19);
 > NOT ERROR
 ```
-- ### **JOIN ,INNER JOIN,LEFT JOIN,RIGHT JOIN**
+
+- ### **JOIN ,INNER JOIN,LEFT JOIN,RIGHT JOIN,LEFT OUTER JOIN, RIGHT OUTER JOIN, FULL OUTER JOIN**
+
 > _Đều dùng để lấy dữ liệu từ nhiều bảng_
+
 > _INNER JOIN dùng để lấy dữ liệu chung từ 2 bảng_
+
 > _LEFT JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên trái_
+
 > _RIGHT JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên phải_
+
+> _LEFT OUTER JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên trái và bảng bên phải_
+
+> _RIGHT OUTER JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên phải và bảng bên trái_
+
+> _FULL OUTER JOIN dùng để lấy dữ liệu phù hợp  từ 2 bảng_
+
+> _Lưu ý : Khi ta dùng JOIN thì nó sẽ tự động dùng INNER JOIN_, dữ liệu phù hợp từ 2 bảng là dữ liệu chung , có trong cả 2 bảng
+
+
 ```SQL
-SELECT *FROM Staff f JOIN Admin a on f.admin_id = a.admin_id;
+
+SELECT * FROM Staff f JOIN Admin a on f.admin_id = a.admin_id;
+SELECT * FROM Staff f INNER JOIN Admin a on f.admin_id = a.admin_id;
+SELECT * FROM Staff f LEFT JOIN Admin a on f.admin_id = a.admin_id;
+SELECT * FROM Staff f RIGHT JOIN Admin a on f.admin_id = a.admin_id;
+SELECT * FROM Staff f LEFT OUTER JOIN Admin a on f.admin_id = a.admin_id;
+SELECT * FROM Staff f RIGHT OUTER JOIN Admin a on f.admin_id = a.admin_id;
+SELECT * FROM Staff f FULL OUTER JOIN Admin a on f.admin_id = a.admin_id;
+
 ```
 - ### **LIKE và = trong Oracle Database**
+
 > _Dấu '=' dùng để so sánh 2 giá trị có bằng nhau hay không, còn like thì cũng tương tự nhưng like có thể dùng để so sánh gần đúng hoặc conatain,startwith,endwith,... Trường hợp so sánh này thì like nhỉnh hơn '='.
+
 ```SQL
 -- dùng =
 SELECT name,age,gender FROM Staff WHERE name = 'tholv';
