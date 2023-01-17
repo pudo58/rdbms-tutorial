@@ -44,7 +44,7 @@ INSERT INTO Category VALUES (8, 'LG', 3)
 
 | CategoryID | CategoryName | ParentID |
 |------------|--------------|----------|
-| 1          | Electronics  | NULL     |
+| 1          | Electronics  | (null)   |
 | 2          | Mobile       | 1        |
 | 3          | TV           | 1        |
 | 4          | Samsung      | 2        |
