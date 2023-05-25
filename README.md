@@ -4,7 +4,7 @@
 
 ## Note By Lã Văn Thọ - Fullstack Developer
 
-### Update 17 - 01 - 2023
+### Update 25 - 05 - 2023
 
 ### Phần học Oracle DataBase 12c ở đây
 

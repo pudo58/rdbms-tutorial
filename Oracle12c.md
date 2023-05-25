@@ -102,6 +102,12 @@ select * FROM cteQuery;
  
  ```
 
+- ### **COALESCE(param1,param2,...,paramN)**
+> _COALESCE sẽ trả về giá trị đầu tiên khác null_
+
+```SQL
+SELECT COALESCE(NULL,NULL,'tholv') FROM dual;
+```
 - ### **CONCAT(param1,param2)**
 
 > _CONCAT dùng để nối 2 chuỗi lại với nhau_
@@ -122,6 +128,16 @@ SELECT 'tholv'||'nguyennt' FROM dual;
 
  => 1
  ```
+ - ### **LIMIT**
+> _LIMIT dùng để giới hạn số lượng bản ghi trả về_
+```SQL
+SELECT * FROM Category LIMIT 2;
+```
+- ### **OFFSET**
+> _OFFSET dùng để bỏ qua số lượng bản ghi trả về_
+```SQL
+SELECT * FROM Category LIMIT 2 OFFSET 2;
+```
  - ### **TO_DATE**
  > _TO_DATE('String','regex_date_string') dùng để chuyển chuỗi về dạng date để so sánh order by ..._
 
@@ -226,21 +242,19 @@ INSERT INTO STAFF(NAME,AGE) VALUES('THOLV',19);
 > NOT ERROR
 ```
 
-- ### **JOIN ,INNER JOIN,LEFT JOIN,RIGHT JOIN,LEFT OUTER JOIN, RIGHT OUTER JOIN, FULL OUTER JOIN**
+- ### **JOIN,CROSS JOIN ,INNER JOIN,LEFT JOIN,RIGHT JOIN,LEFT OUTER JOIN, RIGHT OUTER JOIN, FULL OUTER JOIN**
 
 > _Đều dùng để lấy dữ liệu từ nhiều bảng_
 
+> _CROSS JOIN dùng để lấy dữ liệu của tất cả các dữ liệu từ bảng bên trái và bảng bên phải_
+
 > _INNER JOIN dùng để lấy dữ liệu chung từ 2 bảng_
 
-> _LEFT JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên trái_
+> _LEFT JOIN dùng để lấy dữ liệu của tất cả các dữ liệu từ bảng bên trái và dữ liệu phù hợp từ bảng bên phải_
 
-> _RIGHT JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên phải_
+> _RIGHT JOIN dùng để lấy dữ liệu của tất cả các dữ liệu từ bảng bên phải và dữ liệu phù hợp từ bảng bên trái_
 
-> _LEFT OUTER JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên trái và bảng bên phải_
-
-> _RIGHT OUTER JOIN dùng để lấy dữ liệu phù hợp  từ bảng bên phải và bảng bên trái_
-
-> _FULL OUTER JOIN dùng để lấy dữ liệu phù hợp  từ 2 bảng_
+> _FULL OUTER JOIN dùng để lấy dữ liệu của tất cả các dữ liệu từ bảng bên phải và bên trái_
 
 > _Lưu ý : Khi ta dùng JOIN thì nó sẽ tự động dùng INNER JOIN_, dữ liệu phù hợp từ 2 bảng là dữ liệu chung , có trong cả 2 bảng
 
@@ -254,6 +268,10 @@ SELECT * FROM Staff f RIGHT JOIN Admin a on f.admin_id = a.admin_id;
 SELECT * FROM Staff f LEFT OUTER JOIN Admin a on f.admin_id = a.admin_id;
 SELECT * FROM Staff f RIGHT OUTER JOIN Admin a on f.admin_id = a.admin_id;
 SELECT * FROM Staff f FULL OUTER JOIN Admin a on f.admin_id = a.admin_id;
+SELECT * FROM Staff f CROSS JOIN Admin a on f.admin_id = a.admin_id;
+
+-- Lưu ý , CROSS JOIN còn được gọi là CARTESIAN JOIN và có thể được viết như sau
+SELECT * FROM Staff f,Admin a;
 
 ```
 - ### **LIKE và = trong Oracle Database**
