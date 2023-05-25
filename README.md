@@ -23,6 +23,8 @@ Oracle Database là một hệ quản trị cơ sở dữ liệu quan hệ (Rela
 
 > "SQL là ngôn ngữ lập trình mạnh mẽ nhất mà tôi từng biết. Nó cho phép bạn thực hiện những điều tuyệt vời với dữ liệu " ― Michael J. Hernandez
 
+>"Tôi note ra tài liệu này năm tôi 20 tuổi, tôi đã từng nghĩ rằng tôi sẽ không bao giờ cần nó. Nhưng tôi đã sai, tôi đã sử dụng nó nhiều hơn tôi từng nghĩ. Nó là một trong những tài liệu tốt nhất mà tôi từng note ra" ― Lã Văn Thọ
+
 
 ### Update 25 - 05 - 2023
 
