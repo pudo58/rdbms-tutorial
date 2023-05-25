@@ -4,10 +4,13 @@
 
 ## Giới thiệu
 
-Oracle Database là một hệ quản trị cơ sở dữ liệu quan hệ (Relational Database Management System – RDBMS) được phát triển và phân phối bởi Oracle Corporation. Oracle Database là một phần quan trọng của Oracle Fusion Middleware.
-## Cài đặt Oracle DataBase 12c
+Oracle Database là một hệ quản trị cơ sở dữ liệu quan hệ (Relational Database Management System – RDBMS) được phát triển và phân phối bởi Oracle Corporation. Oracle Database là một phần quan trọng của Oracle Fusion Middleware. Oracle Database là một hệ quản trị cơ sở dữ liệu đa luồng, đa người dùng, với hơn 500 tính năng mới.
 
 ## Note By Lã Văn Thọ - Fullstack Developer (Java & VueJS, ReactJs, NodeJS, Angular, VueJS, PHP, Python, Ruby, C/C++/C#, GoLang, SQL, NoSQL,....)
+
+## Link StackOverFlow của tôi
+
+[Link StackOverFlow](https://stackoverflow.com/users/18500877/lavantho0508-java-dev)
 
 ## Châm ngôn code của tôi
 
