@@ -17,6 +17,12 @@ Oracle Database là một hệ quản trị cơ sở dữ liệu quan hệ (Rela
 
 > Lập trình là nghệ thuật của sự kết hợp. Cơ sở dữ liệu là base , nắm vững cơ sở dữ liệu sẽ giúp bạn dễ dàng hơn trong việc học các ngôn ngữ lập trình khác.
 
+> Hãy luôn nhớ rằng, bạn không phải là người duy nhất đang đọc code của bạn. Hãy code cho người khác đọc, và hãy code cho chính bạn đọc.
+
+## Truyền cảm hứng để học SQL
+
+> "SQL là ngôn ngữ lập trình mạnh mẽ nhất mà tôi từng biết. Nó cho phép bạn thực hiện những điều tuyệt vời với dữ liệu " ― Michael J. Hernandez
+
 
 ### Update 25 - 05 - 2023
 
